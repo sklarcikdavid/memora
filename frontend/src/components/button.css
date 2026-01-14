@@ -1,0 +1,27 @@
+.admin-link {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    z-index: 100;
+    text-decoration: none;
+    pointer-events: auto;
+}
+
+.app-button {
+    background: #4b656cff;
+    border: 1px solid var(--powder-blue);
+    color: var(--pale-sky);
+    padding: 10px 22px;
+    border-radius: 10px;
+    letter-spacing: 0.2em;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.app-button:hover {
+    background: #597081ff;
+}
+.app-button:active {
+    transform: translateY(0);
+    opacity: 0.85;
+}
