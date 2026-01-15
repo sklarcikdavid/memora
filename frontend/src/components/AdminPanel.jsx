@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
-function AddPerson() {
+function AdminPanel() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [age, setAge] = useState("");
@@ -76,4 +76,4 @@ function AddPerson() {
   );
 }
 
-export default AddPerson;
+export default AdminPanel;

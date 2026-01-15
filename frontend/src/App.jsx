@@ -5,7 +5,7 @@ import { ScrollControls, useScroll } from "@react-three/drei";
 
 
 import Preloader from "./components/Preloader";
-import AddPerson from "./components/AddPerson";
+import AdminPanel from "./components/AdminPanel";
 import Button from "./components/button";
 import LangButton from "./components/LangButton";
 
@@ -75,7 +75,7 @@ const App = () => {
               />
             }
           />
-          <Route path="/admin" element={<AddPerson />} />
+          <Route path="/admin" element={<AdminPanel />} />
         </Routes>
       )}
     </>
