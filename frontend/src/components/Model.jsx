@@ -6,20 +6,19 @@ const Model = forwardRef((props, ref) => {
   const group = useRef();
   const { nodes, materials } = useGLTF("/glasses.gltf");
 
-useEffect(() => {
-  if (!group.current || group.current.userData.centered) return;
+  useEffect(() => {
+    if (!group.current || group.current.userData.centered) return;
 
-  const box = new THREE.Box3().setFromObject(group.current);
-  const center = box.getCenter(new THREE.Vector3());
-  group.current.position.sub(center);
+    const box = new THREE.Box3().setFromObject(group.current);
+    const center = box.getCenter(new THREE.Vector3());
+    group.current.position.sub(center);
 
-  group.current.userData.centered = true;
-}, []);
-
+    group.current.userData.centered = true;
+  }, []);
 
   return (
     <group ref={ref || group} {...props} dispose={null}>
-      <group scale={0.60}>
+      <group scale={0.6}>
         <mesh geometry={nodes.Object_1_Plastic_0.geometry} material={materials.Plastic} />
         <mesh geometry={nodes.Object_2_Plastic_0.geometry} material={materials.Plastic} />
         <mesh geometry={nodes.Object_3_Plastic_0.geometry} material={materials.Plastic} />

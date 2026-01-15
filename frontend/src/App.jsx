@@ -1,21 +1,20 @@
-import { useState, useEffect, Suspense } from "react";
+import { useState, useEffect, Suspense, useRef } from "react";
 import { Routes, Route, Link } from "react-router-dom";
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { ScrollControls, useScroll } from "@react-three/drei";
+
 
 import Preloader from "./components/Preloader";
 import AddPerson from "./components/AddPerson";
 import Button from "./components/button";
 import LangButton from "./components/LangButton";
-import Model from "./components/Glasses.jsx";
+
+/* ===== HOME ===== */
 
 const Home = ({ visible, lang, toggleLang }) => {
   const text = {
-    cz: {
-      title: "MEMORA",
-    },
-    en: {
-      title: "MEMORA",
-    },
+    cz: { title: "MEMORA" },
+    en: { title: "MEMORA" },
   };
 
   return (
@@ -29,26 +28,21 @@ const Home = ({ visible, lang, toggleLang }) => {
       </div>
 
       <div className="hero-layout">
+        {/* TEXT */}
         <div className="hero-text">
           <h1>{text[lang].title}</h1>
         </div>
 
+        {/* MÍSTO PRO 3D MODEL (zatím prázdné) */}
         <div className="hero-3d">
-          <Canvas camera={{ position: [0, 0, 2.5], fov: 40 }}>
-            <ambientLight intensity={0.8} />
-            <directionalLight position={[5, 5, 5]} intensity={1.5} />
-
-            <Suspense fallback={null}>
-              
-<Model scale={0.1} rotation={[0, -0.25, 0]} />
-
-            </Suspense>
-          </Canvas>
+          {/* tady později vrátíš Canvas */}
         </div>
       </div>
     </div>
   );
 };
+
+/* ===== APP ===== */
 
 const App = () => {
   const [showIntro, setShowIntro] = useState(true);
@@ -61,7 +55,7 @@ const App = () => {
 
   useEffect(() => {
     if (!showIntro) {
-      setTimeout(() => setPageVisible(true), 200);
+      setPageVisible(true);
     }
   }, [showIntro]);
 
@@ -73,7 +67,13 @@ const App = () => {
         <Routes>
           <Route
             path="/"
-            element={<Home visible={pageVisible} lang={lang} toggleLang={toggleLang} />}
+            element={
+              <Home
+                visible={pageVisible}
+                lang={lang}
+                toggleLang={toggleLang}
+              />
+            }
           />
           <Route path="/admin" element={<AddPerson />} />
         </Routes>
