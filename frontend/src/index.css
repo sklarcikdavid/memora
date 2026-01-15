@@ -21,9 +21,15 @@ body,
 }
 
 body {
-  background: linear-gradient(135deg, var(--black), var(--blue-slate-2));
-  color: var(--pale-sky);
-  font-family: 'Montserrat', system-ui, sans-serif;
+
+    min-height: 100vh;
+    background: linear-gradient(180deg,
+        #05080b 0%,
+        #1a2630 40%,
+        #2a3a44 100%);
+    background-attachment: fixed;
+    color: var(--pale-sky);
+    font-family: 'Montserrat', system-ui, sans-serif;
   overflow: auto;
 }
 
@@ -49,13 +55,17 @@ body {
 /* TEXT */
 .hero-text h1 {
   font-size: 5rem;
-  letter-spacing: 0.4em;
+  letter-spacing: 0.18em;
+  font-weight: 300;
 }
 
 .hero-text p {
-  margin-top: 20px;
+  margin-top: 18px;
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
   color: var(--powder-blue);
-  letter-spacing: 0.15em;
+  max-width: 520px;
+  line-height: 1.6;
 }
 
 /* 3D container - canvas inside will fill it */

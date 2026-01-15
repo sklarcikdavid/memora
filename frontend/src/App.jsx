@@ -1,48 +1,9 @@
-import { useState, useEffect, Suspense, useRef } from "react";
-import { Routes, Route, Link } from "react-router-dom";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { ScrollControls, useScroll } from "@react-three/drei";
-
+import { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
 
 import Preloader from "./components/Preloader";
-import AdminPanel from "./components/AdminPanel";
-import Button from "./components/button";
-import LangButton from "./components/LangButton";
-
-/* ===== HOME ===== */
-
-const Home = ({ visible, lang, toggleLang }) => {
-  const text = {
-    cz: { title: "MEMORA" },
-    en: { title: "MEMORA" },
-  };
-
-  return (
-    <div className={`home ${visible ? "page-visible" : ""}`}>
-      <Link to="/admin" className="admin-link">
-        <Button>ADMIN</Button>
-      </Link>
-
-      <div style={{ position: "fixed", top: "24px", right: "140px", zIndex: 10 }}>
-        <LangButton lang={lang} toggleLang={toggleLang} />
-      </div>
-
-      <div className="hero-layout">
-        {/* TEXT */}
-        <div className="hero-text">
-          <h1>{text[lang].title}</h1>
-        </div>
-
-        {/* MÍSTO PRO 3D MODEL (zatím prázdné) */}
-        <div className="hero-3d">
-          {/* tady později vrátíš Canvas */}
-        </div>
-      </div>
-    </div>
-  );
-};
-
-/* ===== APP ===== */
+import Home from "./pages/Home";
+import Admin from "./pages/Admin";
 
 const App = () => {
   const [showIntro, setShowIntro] = useState(true);
@@ -75,7 +36,7 @@ const App = () => {
               />
             }
           />
-          <Route path="/admin" element={<AdminPanel />} />
+          <Route path="/admin" element={<Admin />} />
         </Routes>
       )}
     </>
